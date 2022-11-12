@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { login } from '../services/login';
 
 export const Card = () => {
-  //const [name, setName] = useState("");
+  const [email, setEmail] = useState('');
   return(
 <ChakraProvider>
       <Box minHeight='100vh' backgroundColor='#9413dc' padding='25px'>
@@ -17,11 +17,11 @@ export const Card = () => {
           <Center>
             <h1>Faça o login</h1>
           </Center>
-          <Input placeholder="email" />
+          <Input placeholder="email" value={email} onChange={(event) => setEmail(event.target.value)} />
           <Input placeholder="password" />
           <Center>
             <NButton
-              onClick = {login} 
+              onClick = {() => login(email)} 
             />            
           </Center>
         </Box>
