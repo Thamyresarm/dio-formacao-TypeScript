@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 import { UserData } from "../components/UserData";
 
 const InfoConta = () => {
-    const userdata = useContext(UserData)
+    const userData = useContext(UserData)
 
     return (
         <>
             <Text fontSize='3x1' fontWeight='bold'>
                 Informações da Conta
             </Text>
-            <Text fontSize='3x1' fontWeight='bold'>Id:</Text>  {userdata.userData?.id} 
-            <Text fontSize='3x1' fontWeight='bold'>Nome:</Text>  {userdata.userData?.name}
-            <Text fontSize='3x1' fontWeight='bold'>Email:</Text> {userdata.userData?.email}
+            <Text fontSize='3x1' fontWeight='bold'>Id:</Text>  {userData.userData?.id} 
+            <Text fontSize='3x1' fontWeight='bold'>Nome:</Text>  {userData.userData?.name}
+            <Text fontSize='3x1' fontWeight='bold'>Email:</Text> {userData.userData?.email}
             <br />
             <br />
             <Link to='/conta/1'>

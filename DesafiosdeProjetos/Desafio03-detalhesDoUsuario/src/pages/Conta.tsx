@@ -1,39 +1,22 @@
 import { Center, SimpleGrid, Spinner } from "@chakra-ui/react"
 import { useParams, useNavigate } from 'react-router-dom'
-import { useContext, useEffect, useState } from "react";
-import { api } from "../api";
+import { useContext } from "react";
 import CardInfo from "../components/CardInfo";
 import { AppContext } from "../components/AppContext";
-
-interface IUserData {
-    email: string
-    password: string
-    name: string
-    balance: Number
-    id: string
-  }
+import { UserData } from "../components/UserData";
 
 const Conta = () => {
-    const [userData, setUserData] = useState<null | IUserData>();
+    const userData = useContext(UserData)
     const { id } = useParams()  
     const navigate = useNavigate()
 
     const { isLoggedIn } = useContext(AppContext)
 
     !isLoggedIn && navigate('/')
-    
-    useEffect(() => {
-        const getData = async () => {
-            const data: any | IUserData = await api
-            setUserData(data)
-        }
-        
-        getData()
-    }, [])
-    
+       
     const actualDate = new Date()
     
-    if(userData && id !== userData.id){
+    if(userData.userData && id !== userData.userData.id){
         navigate('/')
     }
     
@@ -50,13 +33,13 @@ const Conta = () => {
                     (
                        <>
                         <CardInfo 
-                            mainContent = {`Bem Vindo(a) ${userData?.name}`} 
+                            mainContent = {`Bem Vindo(a) ${userData.userData?.name}`} 
                             content = {`${actualDate.getDate()} / ${actualDate.getMonth()} / ${actualDate.getFullYear()} ${actualDate.getHours()}:${actualDate.getMinutes()}`} 
                         />
 
                         <CardInfo 
                             mainContent = {`Saldo`} 
-                            content = {`${userData?.balance} `} 
+                            content = {`${userData.userData?.balance} `} 
                         />
                        </>                    
                     )
