@@ -36,6 +36,7 @@ const Conta = () => {
     if(userData && id !== userData.id){
         navigate('/')
     }
+    
     return(
         <Center>
             <SimpleGrid columns={2} spacing={8} paddingTop={16}>
@@ -50,7 +51,7 @@ const Conta = () => {
                        <>
                         <CardInfo 
                             mainContent = {`Bem Vindo(a) ${userData?.name}`} 
-                            content = {`${actualDate.getDay()} / ${actualDate.getMonth()} / ${actualDate.getFullYear()} ${actualDate.getHours()}:${actualDate.getMinutes()}`} 
+                            content = {`${actualDate.getDate()} / ${actualDate.getMonth()} / ${actualDate.getFullYear()} ${actualDate.getHours()}:${actualDate.getMinutes()}`} 
                         />
 
                         <CardInfo 

@@ -9,19 +9,20 @@ import { changeLocalStorage } from "../services/storage";
 
 const Home = () => {
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const { setIsLoggedIn } = useContext(AppContext)
     const navigate = useNavigate()
 
-    const validateUser = async (email: string) => {
-        const loggedIn = await login(email)
+    const validateUser = async (email: string, password: string) => {
+        const loggedIn = await login(email, password)
 
         if (!loggedIn) {
-            return alert('Email inválido')
+            return alert('Email ou senha incorreta!')
         }
         
         setIsLoggedIn(true)
-        changeLocalStorage({login: true})
-        navigate('/conta/1')
+        changeLocalStorage({email: email, password: password})
+        navigate('/infoconta')
     }
 
     return (
@@ -30,10 +31,10 @@ const Home = () => {
                 <h1>Faça o login</h1>
             </Center>
             <Input placeholder="email" value={email} onChange={(event) => setEmail(event.target.value)} />
-            <Input placeholder="password" />
+            <Input placeholder="password" value={password} onChange={(event) => setPassword(event.target.value)} />
             <Center>
                 <NButton
-                    onClick={() => validateUser(email)}
+                    onClick={() => validateUser(email, password)}
                 />
             </Center>
         </Card>

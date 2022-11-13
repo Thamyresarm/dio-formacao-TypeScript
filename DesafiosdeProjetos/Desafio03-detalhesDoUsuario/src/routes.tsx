@@ -10,9 +10,9 @@ const MainRoutes = () => {
 
     return (
         <Routes>
-            <Route path='/' element={<Home />} />            
+            <Route path='/' element={ !isLoggedIn ? <Home /> : <InfoConta />} />            
             <Route path='/conta/:id' element={ isLoggedIn ? <Conta /> : <Home />} />
-            <Route path='/infoconta/' element={<InfoConta />} />
+            <Route path='/infoconta/' element={ isLoggedIn ? <InfoConta /> : <Home />} />
         </Routes>
     )
 }
