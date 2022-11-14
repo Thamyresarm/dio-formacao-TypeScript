@@ -1,16 +1,21 @@
 import { UserController } from "./UserController"
-import { UserService } from "../services/UserService"
+import { IUser, UserService } from "../services/UserService"
 import { Request } from "express"
 import { makeMockResponse } from "../__mocks__/mockResponse.mock"
 import { makeMockRequest } from "../__mocks__/mockRequest.mock"
 
 describe('UserController' , () => {
-    const mockUserService: Partial<UserService> = {
-        createUser: jest.fn(),
-        getAllUsers: jest.fn(),
-        deleteUser: jest.fn()
-    }
-    const userController = new UserController(mockUserService as UserService)
+    const mockDb: IUser[] = []
+    const mockUserService = new UserService(mockDb);
+    
+    // const mockUserService: Partial<UserService> = {
+    //     createUser: jest.fn(),
+    //     getAllUsers: jest.fn(),
+    //     deleteUser: jest.fn()
+    // }
+    // const userController = new UserController(mockUserService as UserService)
+
+    const userController = new UserController(mockUserService)
     const mockResponse = makeMockResponse()
 
     it('Deve adicionar um novo usuário', () => {

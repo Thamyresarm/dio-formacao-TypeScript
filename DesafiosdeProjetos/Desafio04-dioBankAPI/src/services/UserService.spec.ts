@@ -11,15 +11,18 @@ describe('UserService', () => {
         expect(mockConsole).toHaveBeenCalledWith("Db", mockDb)
     }) 
 
+    it('Deve retornar todos os usuarios', () => {
+        const response = userService.getAllUsers()
+        expect(response).toBe(mockDb)
+    })
+
     it('Deve retornar true ao deletar o usuario', () => {
-        const mockConsole = jest.spyOn(global.console, 'log')
-        userService.deleteUser('Thamy');
-        expect(mockConsole).toHaveBeenCalledWith(true)
+        const response = userService.deleteUser('Thamy');
+        expect(response).toBeTruthy
     }) 
     
     it('Deve retornar false ao deletar o usuario', () => {
-        const mockConsole = jest.spyOn(global.console, 'log')
-        userService.deleteUser('Jorge');
-        expect(mockConsole).toHaveBeenCalledWith(false)
+        const response = userService.deleteUser('Jorge');
+        expect(response).toBeFalsy
     }) 
 })

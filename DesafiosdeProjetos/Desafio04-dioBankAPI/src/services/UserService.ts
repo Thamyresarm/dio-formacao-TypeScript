@@ -27,7 +27,6 @@ export class UserService {
     }
 
     getAllUsers = () => {
-        console.log(this.dbtest)
         return this.dbtest
     }
 
@@ -36,10 +35,8 @@ export class UserService {
         if(user){
             const index = this.dbtest.indexOf(user)
             db.splice(index, 1)
-            console.log(true)
             return true
         } else {
-            console.log(false)
             return false
         }
     }
