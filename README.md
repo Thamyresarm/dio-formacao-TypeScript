@@ -1,6 +1,8 @@
 # DIO Formacao de TypeScript
 Repositório com o material e conteúdos da formação de Typescript da DIO
 
+![image](https://user-images.githubusercontent.com/24790794/201801167-2713d665-29e9-4207-961b-83aa893a8c00.png)
+
 ## Autor
 
 <a href="https://www.linkedin.com/in/thamyres-magalhaes/">
